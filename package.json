@@ -1,0 +1,56 @@
+{
+  "name": "houndify-logging-system",
+  "version": "1.0.0",
+  "description": "Logging System For Houndify queries",
+  "main": "index.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "start": "nodemon",
+    "build": "next build && rm -rf dist && babel server --out-dir dist --ignore 'server/**/*.spec.js','server/**/*.test.js'",
+    "prod": "node dist/index.js",
+    "deploy": "npm run build && pm2 start ./deploy.json"
+  },
+  "keywords": [
+    "react",
+    "express",
+    "typescript",
+    "web"
+  ],
+  "author": "Haochuan<haochuan.liu@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "antd": "^3.11.2",
+    "axios": "^0.18.0",
+    "babel-plugin-import": "^1.11.0",
+    "classnames": "^2.2.6",
+    "compression": "^1.7.3",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "lint-staged": "^8.1.0",
+    "morgan": "^1.9.1",
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/node": "^7.2.2",
+    "nodemon": "^1.18.9",
+    "prettier": "^1.15.3"
+  },
+  "lint-staged": {
+    "*.js": [
+      "./node_modules/prettier/bin-prettier.js --single-quote --tab-width 2 --write",
+      "git add"
+    ]
+  },
+  "nodemonConfig": {
+    "watch": [
+      "server"
+    ],
+    "exec": "babel-node server/index.js"
+  }
+}

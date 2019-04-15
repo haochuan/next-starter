@@ -1,0 +1,13 @@
+{
+  "apps": [
+    {
+      "name": "Houndify Logging System:8989",
+      "script": "dist/index.js",
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": "8989"
+      }
+    }
+  ]
+}
